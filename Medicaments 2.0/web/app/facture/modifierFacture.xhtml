@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                template="/WEB-INF/templates/common-layout.xhtml" 
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <ui:define name="title">Modification d'une facture</ui:define>
+
+    <ui:define name="common-content">
+
+        <h:form id="yy">
+            <h:messages globalOnly="true"/>
+
+            <h:outputLabel value="date de la facture"/>
+            <h:inputText id="date" value="#{modifierFactureControleur.facture.dateFacture}" required="true"> 
+                <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+            </h:inputText>
+            <h:message for="date"/>
+            <br/>
+            <h2>ajouter un detail</h2>
+            <h:panelGrid columns="2" border="2" cellspacing="0"> 
+
+                <h:selectOneMenu value="#{modifierFactureControleur.ligneFacture.composant}" converter="#{composantConverter}"
+                                 id="composant" required="true">
+                    <f:selectItem itemLabel="seelctionner un composant"/>
+                    <f:selectItems value="#{listeComposantControleur.composants}" var="c" itemLabel="#{c.nom}"/>
+                </h:selectOneMenu>   
+                <h:message for="composant"/>
+
+                <h:inputText id="lot" value="#{modifierFactureControleur.ligneFacture.lot}" a:placeholder="numero de lot" required="true"/>
+                <h:message for="lot"/>
+
+                <h:inputText id="dateFabrication" value="#{modifierFactureControleur.ligneFacture.dateFabrication}" a:placeholder="date de fabrication" required="true">
+                    <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                </h:inputText>
+                <h:message for="dateFabrication"/>
+
+                <h:inputText id="dateExpiration" value="#{modifierFactureControleur.ligneFacture.dateExpiration}" a:placeholder="date d'expiration" required="true">
+                    <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                </h:inputText>
+                <h:message for="dateExpiration"/>      
+
+                <h:inputText id="quantite" value="#{modifierFactureControleur.ligneFacture.quantite}" a:placeholder="entrer la quantité" required="true"/>
+                <h:message for="quantite"/>
+                <h:selectOneMenu id="uniteMesure" value="#{modifierFactureControleur.ligneFacture.uniteMesure}" required="true">
+                    <f:selectItem itemLabel="selectionner une unité de mesure"/>
+                    <f:selectItems value="#{modifierFactureControleur.tabUniteMesure}"/>
+                </h:selectOneMenu>
+                <h:message for="uniteMesure"/>
+
+            </h:panelGrid> 
+            <br/>
+
+            <h:commandButton action="#{modifierFactureControleur.add()}" value="ajouter une ligne" />
+            <h:commandButton action="#{modifierFactureControleur.add()}" value="Annuler" />
+            <br/>
+
+            <h2>listes des détails ajoutés</h2>
+            <h:dataTable border="2" value="#{modifierFactureControleur.facture.lignesFacture}" var="lf" cellpadding="10">
+                <h:column>
+                    <f:facet name="header">id du Composant</f:facet>
+                        #{lf.composant.id}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Nom du Composant</f:facet>
+                        #{lf.composant.nom}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">quantité du composant</f:facet>
+                        #{lf.quantite}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Unité de mesure</f:facet>
+                        #{lf.uniteMesure}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Actions</f:facet>
+
+                    <h:commandButton actionListener="#{modifierFactureControleur.modifierLigne(lf)}" 
+                                     immediate="true" 
+                                     value="Modifier" >
+                        <f:setPropertyActionListener  value="#{lf}" target="#{modifierFactureControleur.ligneFacture}" />
+                        <f:ajax render="@form" />
+                    </h:commandButton>
+
+
+                    <h:commandButton actionListener="#{modifierFactureControleur.supprimerLigne(lf)}" 
+                                     immediate="true"
+                                     value="Supprimer" rendered="@yy" />
+
+                </h:column>
+
+            </h:dataTable>
+            <br/>
+        </h:form>
+        <h:form>
+            <h:commandButton actionListener="#{modifierFactureControleur.modifier()}"
+                            value="Enregistrer la modification" />
+
+
+
+        </h:form>
+
+    </ui:define>
+</ui:composition>
+

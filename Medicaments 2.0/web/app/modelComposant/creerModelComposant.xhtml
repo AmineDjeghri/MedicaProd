@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition
+    template="/WEB-INF/templates/common-layout.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+  
+    <ui:define name="title">Creer Composant Model</ui:define>
+    
+    <ui:define name="common-content">
+    
+        <h:form>
+            <h:messages globalOnly="true"/>
+            
+            <h:outputLabel value="nom"/>
+            <h:inputText id="nom" value="#{modelComposantControleur.modelComposant.nom}" required="true" />
+            <h:message for="nom"/> 
+            <br/>
+            
+           
+            
+            <h:outputLabel value="code"/>
+            <h:inputText id="code" value="#{modelComposantControleur.modelComposant.code}" required="true"/>
+            <h:message for="code"/> 
+            <br/>
+            
+            
+            <h:outputLabel value="Type du Composant Modèle"/>
+            <h:selectOneMenu id="modelComposant" value="#{modelComposantControleur.modelComposant.typeComposant}" required="true">
+                <f:selectItem itemLabel="Selectionner un type" />
+                <f:selectItems value="#{modelComposantControleur.tabTypeComposant}"/>
+            </h:selectOneMenu>
+            <h:message for="modelComposant"/>
+            <br/>
+            
+            <h:commandButton value="inserer" action="creerModelComposant" actionListener="#{modelComposantControleur.inserer()}"/>
+        </h:form>
+</ui:define>
+</ui:composition>
+

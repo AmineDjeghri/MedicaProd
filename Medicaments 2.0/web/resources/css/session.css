@@ -1,0 +1,48 @@
+/*---------------Connexion-------------*/
+#connexion .form{
+    width: 400px;
+    height:200px;
+   margin: auto;   
+   margin-top: 100px;
+   background: cadetblue;
+   border: 3px solid darkcyan;
+}
+
+#connexion .form fieldset{
+    height: 88%;
+}
+
+#connexion .panelgrid{
+    margin: auto;
+}
+#connexion .button{
+    
+    
+     margin-top: 25px;
+     margin-left: 150px;
+    
+}
+
+/*-----------------------------------inscription------------------*/
+#inscription .form {
+    
+    width: 250px;
+    margin: auto;
+    margin-top: 20px;
+    
+}
+
+#inscription legend{
+    background: whitesmoke;
+}
+#inscription fieldset{
+    background: chocolate;
+    border-radius: 5px;
+    box-shadow: black 2px 2px 5px;
+}
+
+#inscription .button{
+    margin-left: 70px;
+    margin-top: 20px;
+}
+

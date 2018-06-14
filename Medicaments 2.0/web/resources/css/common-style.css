@@ -1,0 +1,162 @@
+body{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/*--------------------------------HEADER-----------------------*/
+header {
+background: black;
+width: 100%;
+margin: 0;
+padding: 0;
+display: flex;
+justify-content: space-between;
+height: 60px;
+
+}
+
+header #logo-header{
+    margin: 0;
+    padding: 0;
+    height: 60px;
+    min-width: 200px;   
+}
+
+header #logo-header img {
+    margin: 0;
+    padding: 0;
+    min-width: 200px;   
+}
+
+
+header div{
+    width: 300px;
+    padding: 0; margin: 0;
+    
+}
+
+header ul{
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    margin: 0; padding: 0;
+    height: 100%;
+    
+}
+
+
+header div .links{
+    background:aquamarine;
+    display: block;
+    height: 70%;
+    width: 120px;
+    margin: 0;
+    padding: 0;
+    margin-top: 7px;
+    border: solid 1px mediumseagreen;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    line-height: 39px;
+    font-family: initial;
+    font-size: 20px;
+}
+
+header div .links:hover{
+    color: white;
+    background: darkkhaki;
+    border: solid 1px darkkhaki;
+}
+
+
+/*----------------SECTION-------------*/
+section{
+    display: flex;
+    width: 100%;
+    margin: 0; padding: 0;
+}
+/*------------------------NAV inside section---------------------------*/
+nav{
+    background: darkcyan;
+    width: 200px;
+    min-width: 200px;
+    font-family: cursive;
+    margin: 0;
+    padding: 0;
+    
+}
+
+nav h2{
+    margin: 0 10px; padding: 0; 
+   border-bottom: dotted 1px wheat;
+   text-align: center;
+}
+
+nav ul{
+    list-style-type: circle;    
+    margin: 0; 
+    padding: 15px 0px 15px 23px;
+    height: 480px;
+}
+
+nav .menu-links{
+    text-decoration: none;
+    color: blanchedalmond;
+}
+
+nav .menu-links:hover{
+    color: brown;
+}
+
+/*-------------div inside section----------*/
+
+section div {
+    
+    width: 100%;
+}
+
+/*-----------------------FOOTER----------------------*/
+footer {
+    background: black;
+    color: white;
+    margin: 0;
+    padding: 0;
+    bottom: 0;
+}
+
+footer h2{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+footer ul{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    margin: auto; 
+   height: 40px;
+ 
+    
+}
+
+footer a{
+    text-decoration: none;
+    display: block;
+    line-height: 35px;
+    color: aqua;
+}
+footer a:hover{
+    color: blue;
+}
+
+footer div{
+    font-size: 18px;
+     padding: 15px 0;
+     margin: 0;
+    text-align: center;
+
+}

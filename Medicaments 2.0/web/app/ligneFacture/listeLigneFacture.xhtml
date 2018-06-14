@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                template="/WEB-INF/templates/common-layout.xhtml"  
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <ui:define name="title">Liste des factures</ui:define>
+
+    <ui:define name="common-content">
+
+
+        <h:form>
+            <h:messages globalOnly="false" />
+
+            <h:dataTable var="lf" value="#{listeLigneFactureControleur.listeLigneFactures}" border="2" cellspacing="0" cellpadding="10">
+                <h:column><f:facet name="header">id de la ligne-facture</f:facet>#{lf.id}</h:column>
+                <h:column> <f:facet name="header">facture reliée</f:facet> #{lf.facture.id}</h:column>
+                <h:column> <f:facet name="header">Composant relié</f:facet> #{lf.composant.nom}</h:column>
+                
+
+                <h:column>
+                    <f:facet name="header" >Actions</f:facet>
+
+                    <h:commandButton value="Supprimer" 
+                                     action="listeLigneFacture"
+                                     actionListener="#{listeFactureControleur.supprimer(f)}" />
+                </h:column>
+
+            </h:dataTable>
+
+
+        </h:form> 
+
+    </ui:define>
+</ui:composition>

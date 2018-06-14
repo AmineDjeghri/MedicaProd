@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                template="/WEB-INF/templates/common-layout.xhtml"  
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <ui:define name="title">ajouter les détails de la formule</ui:define>
+
+    <ui:define name="common-content">
+        ajouter les composants-modèles (Detail)
+        <br/>
+        <h:form>
+            <h:selectOneMenu value="#{modifierFormuleControleur.detail.modelComposant}" converter="#{modelComposantConverter}" id="mc" required="true">
+                <f:selectItem itemLabel="Selectionner un composant"/>
+                <f:selectItems value="#{listeModelComposantControleur.modelComposants}" var="mc" 
+                               itemLabel="#{mc.id} #{mc.nom}"/>
+            </h:selectOneMenu>
+            <h:message for="mc"> </h:message>
+            <br/>
+
+            <h:outputLabel value="Quantité"/>
+            <h:inputText  value="#{modifierFormuleControleur.detail.quantite}" required="true" id="quantite"/>
+            <h:message for="quantite"> </h:message>
+            <br/>
+
+            <h:outputLabel value="ordre"/>
+            <h:inputText id="ordre" value="#{modifierFormuleControleur.detail.ordre}" required="true"/>
+            <h:message for="ordre"> </h:message>
+            <br/>
+            
+            <h:commandButton value="ajouter" action="#{modifierFormuleControleur.addDetail()}" />
+            <h:commandButton value="annuler" action="#{modifierFormuleControleur.addDetail()}" />
+            <br/>
+            
+            <h:dataTable value="#{modifierFormuleControleur.formule.details}" var="d" border="2" cellpadding="10" cellspacing="0" >
+
+                
+                <h:column>#{d.modelComposant.nom} <f:facet name="header">Nom du composant</f:facet></h:column>
+                <h:column>#{d.modelComposant.code} <f:facet name="header">Code du composant</f:facet></h:column>
+                <h:column>#{d.ordre} <f:facet name="header">L'ordre</f:facet></h:column>
+                <h:column>#{d.quantite}<f:facet name="header">La quantité</f:facet></h:column>
+                <h:column> 
+                    <h:commandButton value="modifier" immediate="true" actionListener="#{modifierFormuleControleur.modifierDetail(d)}"> 
+                    <f:setPropertyActionListener value="#{d}" target="#{modifierFormuleControleur.detail}" />
+                    <f:ajax render="@form"/>
+                    </h:commandButton>
+                         
+                    <f:facet name="header">Modification</f:facet>
+                </h:column>
+                <h:column> 
+                    <h:commandButton  value="Supprimer" actionListener="#{modifierFormuleControleur.supprimerDetail(d)}" immediate="true"/> 
+                    <f:facet name="header">Suppression</f:facet>
+                </h:column>
+            </h:dataTable>
+            <br/>
+
+            <h:commandButton value="enregistrer les modifications" actionListener="#{modifierFormuleControleur.modifier()}"
+                             action="listeFormule" immediate="true" />
+             <h:commandButton action="listeFormule" actionListener="#{modifierFormuleControleur.annuler()}" 
+                              value="Annuler" immediate="true"/>
+        </h:form>
+
+    </ui:define>
+</ui:composition>
+

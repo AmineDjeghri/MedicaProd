@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                template="/WEB-INF/templates/common-layout.xhtml"   
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <ui:define name="title">Creer un medicament</ui:define>
+
+    <ui:define name="common-content">
+        
+        <h:form>
+           
+
+            <h:panelGrid columns="3">
+
+                <h:outputLabel for="idFormule" value="Select formule"  />
+                <h:selectOneMenu id="idFormule" value="#{creerMedicamentControleur.medicament.formule}" 
+                                 converter="#{FormuleConverter}">
+                    <f:selectItem itemLabel="Selectionner une formule" />
+                    <f:selectItems value="#{listeFormuleControleur.formules}"
+                                   var="f" itemLabel="#{f.nom}" />
+                    <f:ajax listener="#{creerMedicamentControleur.obtenirLigneFacture()}"/>
+                </h:selectOneMenu>
+                <h:message for="idFormule" />
+
+                <h:outputLabel value="lot"/>
+                <h:inputText id="lot" value="#{creerMedicamentControleur.medicament.lot}" required="true" >
+
+                </h:inputText>
+                <h:message for="lot" />
+
+                
+                <h:outputLabel value="date de fabrication" for="dateFabrication"/>
+                <h:inputText id="dateFabrication" value="#{creerMedicamentControleur.medicament.dateFabrication}">
+                    <f:convertDateTime type="date" pattern="dd/MM/yyyy"  />
+                </h:inputText>
+                <h:message for="dateFabrication"/>
+
+                <h:outputLabel value="date d'expiration" for="dateExpiration"/>
+                <h:inputText id="dateExpiration" value="#{creerMedicamentControleur.medicament.dateExpiration}">
+                    <f:convertDateTime type="date" pattern="dd/MM/yyyy"  />
+                </h:inputText>
+                <h:message for="dateExpiration" />
+
+                <h:outputLabel value="quantité" for="quantite"/>
+                <h:inputText id="quantite" value="#{creerMedicamentControleur.medicament.quantite}" required="true"/>
+                <h:message for="quantite" />
+
+                <h:outputLabel for="typeMedicament" value="type de médicament"/>
+                <h:selectOneMenu id="typeMedicament" value="#{creerMedicamentControleur.medicament.typeMedicament}">
+                    <f:selectItem itemLabel="Selectionner un type" />
+                    <f:selectItems value="#{creerMedicamentControleur.tabTypeMedicament}" />
+                </h:selectOneMenu>
+                <h:message for="typeMedicament" />
+
+                <h:selectOneMenu>
+                    <f:selectItem itemLabel="selectionner une ligne-facture"/>
+                    <f:selectItems var="lf" value="#{creerMedicamentControleur.ligneFactures}"
+                                   itemLabel="#{lf.composant.nom}"/>
+                </h:selectOneMenu>
+
+                <h:commandButton value="inser" action="#{creerMedicamentControleur.inserer()}"/>
+            </h:panelGrid>
+        </h:form>
+
+    </ui:define>
+</ui:composition>

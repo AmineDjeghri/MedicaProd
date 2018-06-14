@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <h:head>
+       
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <h:outputStylesheet  name="css/common-style.css"/>
+	
+    </h:head>
+    
+    <h:body>
+        <h2>Menu</h2>
+    <ul>
+    <ui:fragment rendered="true"><li><h:link class="menu-links" outcome="/app/formule/creerFormule" value="Creer une formule"></h:link></li></ui:fragment>
+    <ui:fragment rendered="true"><li><h:link class="menu-links" outcome="/app/formule/listeFormule" value="afficher les formules"> </h:link></li></ui:fragment>
+    <ui:fragment rendered="true"><li><h:link class="menu-links" outcome="/app/medicament/creerMedicament" value="creer un medicament"> </h:link> </li></ui:fragment>
+    <ui:fragment rendered="true"><li><h:link class="menu-links" outcome="/app/medicament/listeMedicament" value="Afficher la liste des médicaments"/></li></ui:fragment>
+    <ui:fragment rendered="true"><li><h:link class="menu-links" outcome="/app/modelComposant/creerModelComposant" value="creer un composant Modele"/></li></ui:fragment>
+    <ui:fragment rendered="true"><li><h:link class="menu-links" outcome="/app/modelComposant/listeModelComposant" value="afficher les composants modèles"/></li></ui:fragment>
+    <ui:fragment rendered="true"><li><h:link class="menu-links" outcome="/app/composant/creerComposant" value="Creer un Composant"/></li></ui:fragment>
+    <ui:fragment rendered="true"><li><h:link class="menu-links" outcome="/app/composant/listeComposant" value="Afficher la liste des composants"/></li></ui:fragment>
+    <ui:fragment rendered="true"><li><h:link class="menu-links" outcome="/app/facture/creerFacture" value="Creer une facture"/></li></ui:fragment>
+    <ui:fragment rendered="true"><li><h:link class="menu-links" outcome="/app/facture/listeFacture" value="Afficher la liste des factures"/></li></ui:fragment>
+    <ui:fragment rendered="true"><li><h:link class="menu-links" outcome="/app/ligneFacture/listeLigneFacture" value="Afficher la liste des lignes-facture"/></li></ui:fragment>
+    </ul>
+</h:body>
+    
+    
+</ui:composition>

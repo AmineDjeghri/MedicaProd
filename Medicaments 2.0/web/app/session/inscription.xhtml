@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/WEB-INF/templates/common-layout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    
+    
+        <ui:define name="title">Inscription</ui:define>
+        
+        <ui:define name="common-content">
+            <h:outputStylesheet name="css/session.css"/>
+        <div id="inscription">    
+        
+        <h:form class="form">
+        <h:messages globalOnly="true"/>
+        <fieldset>
+            <legend>Inscription</legend>
+            <h:panelGrid columns="3">
+            
+        <h:outputLabel for="idU" value="votre Psoeudo"/>
+        <h:inputText id="idU" value="#{creerUtilisateurControleur.utilisateur.idUtilisateur}" required="true"/>
+        <h:message for="idU"/>
+        
+        
+        <h:outputLabel for="mdp" value="votre mot de passe"/>
+        <h:inputText id="mdp" value="#{creerUtilisateurControleur.utilisateur.mdp}" required="true"/>
+        <h:message for="mdp"/>
+        
+        
+        <h:outputLabel for="nom" value="votre nom"/>
+        <h:inputText id="nom" value="#{creerUtilisateurControleur.utilisateur.nom}" required="true"/>
+        <h:message for="nom"/>
+        
+        
+        <h:outputLabel for="prenom" value="prénom"/>
+        <h:inputText id="prenom" value="#{creerUtilisateurControleur.utilisateur.prenom}" required="true"/>
+        <h:message for="prenom"/>
+        
+        </h:panelGrid>
+        
+        <h:commandButton class="button" value="S'inscrire" actionListener="#{creerUtilisateurControleur.inserer()}"/>    
+        </fieldset>
+        
+        </h:form>
+            </div>        
+       </ui:define>
+    
+</ui:composition>
+
+

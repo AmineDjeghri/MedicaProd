@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition
+    template="/WEB-INF/templates/common-layout.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    
+    <ui:define name="title">Liste des composants</ui:define>
+    
+    <ui:define name="common-content">
+
+        <h:form>
+            <h:messages globalOnly="false" />
+
+            <h:dataTable value="#{listeComposantControleur.composants}" var="c">
+                <h:column>
+                    #{c.id}<f:facet name="header">ID</f:facet>
+                </h:column>
+                <h:column>
+                    #{c.nom}<f:facet name="header">Nom</f:facet>
+                </h:column>
+                <h:column>
+                    #{c.codeBarre}<f:facet name="header">Codde Barre</f:facet>
+                </h:column>
+                <h:column>
+                    #{c.modelComposant.nom}<f:facet name="header">Model</f:facet>
+                </h:column>
+                <h:column>
+                    #{c.modelComposant.typeComposant}<f:facet name="header">Type Composant</f:facet>
+                </h:column>
+                        <h:column>
+                            <f:facet name="header">Actions</f:facet>
+                    <h:commandButton value="modifier" action="modifierComposant">
+                        <f:param name="c_id" value="#{c.id}"/>
+                    </h:commandButton>
+                            <h:commandButton value="Supprimer" action="listeComposant" actionListener="#{listeComposantControleur.supprimer(c)}"/>     
+                        </h:column>
+                
+            </h:dataTable>                    
+
+            
+        </h:form> 
+
+  </ui:define>
+</ui:composition>
+
